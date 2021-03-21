@@ -1,4 +1,4 @@
 Nombres   
   Valentina Ortega Paz
-  Karen Valentina Obando
-  Isaac Maya Mesa
+  Isaac Maya Meza
+  Karen Valentina Obando 
