@@ -1,27 +1,27 @@
 <!--Diseño frontend-->
 <Informe 03>:
-  - LAYOUT Página de pronosticos
-
+  - LAYOUT General
+  - LAYOUT Página de pronósticos
+  - LAYOUT Página Estaciones
 <Informe 04>:
-  - LAYOUT Página de estaciones
-
-<Informe 05>:
-  - LAYOUT Página Multianual
-
+  - LAYOUT de página de registro y login de usuario
+<!--Integración frontend backend y base de datos-->
+<Informe 05>: 
+  - Conexión del backend a la base de datos
 <!--Diseño backend-->
 <Informe 06>:
-  - Construcción del backend y conexión con el frontend
+- Construcción del backend (Python-Flask)
+- Login de usuario
 
-<!--Integración frontend backend-->
 <Informe 07>:
-  - Conexión del backend a la base de datos
+  -Servicio de datos climaticos 
 
 <Informe 08>:
-  - Generación de gráficas a partir de los datos de la base de datos
+  - Generación de gráficas
 
 <!--Procesamiento de datos-->
 <Informe 09>: 
-  - Generación de tablas a partir de los datos de la base de datos
-  
+  - Generación de tablas
+ 
 <Informe 10>:
   - Despliegue en Heroku
