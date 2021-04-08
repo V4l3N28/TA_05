@@ -3,6 +3,7 @@
   - LAYOUT General
   - LAYOUT Página de pronósticos
   - LAYOUT Página Estaciones
+  - 
 <Informe 04>:
   - LAYOUT de página de registro y login de usuario
 <!--Integración frontend backend y base de datos-->
