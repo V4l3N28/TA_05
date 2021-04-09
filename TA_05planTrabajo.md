@@ -13,7 +13,7 @@ Como versión preliminar se usarán imágenes en vez de gráficos.
 
   - LAYOUT Multianual  
   
-![Multianual](https://user-images.githubusercontent.com/80772803/114123280-9ae3f580-98b7-11eb-9f18-e79eec997410.png)
+![multi](https://user-images.githubusercontent.com/80727758/114239987-6cfcc080-994c-11eb-9f32-1905508d7ac3.jpg)
 
   - LAYOUT Página de pronósticos
   
@@ -21,7 +21,8 @@ Como versión preliminar se usarán imágenes en vez de gráficos.
 
   - LAYOUT Página Estaciones
   
-  ![images](https://user-images.githubusercontent.com/80772803/114126017-34fa6c80-98bd-11eb-9ffd-c5305066e011.png)
+  ![esta](https://user-images.githubusercontent.com/80727758/114240005-7423ce80-994c-11eb-869c-b2cf14b3eb79.jpg)
+
 
 <Informe 06>:
   - LAYOUT de página de registro y login de usuario
