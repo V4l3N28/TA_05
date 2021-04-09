@@ -23,23 +23,26 @@ Como versión preliminar se usarán imágenes en vez de gráficos.
 
 <!--Integración frontend backend y base de datos-->
 <Informe 05>: 
-  - Conexión del backend a la base de datos
+  - Conexión del backend a la base de datos (SQLite)
+  - Conexión del backend de (Python-Flask) a la base de datos para registrar y leer datos de la base de datos
 <!--Diseño backend-->
 <Informe 06>:
 - Construcción del backend (Python-Flask)
-
+- Generación de rutas y restricciones de usuario para navegación en la página
 <Informe 07>:
-  -Servicio de datos climaticos
-  - Login de usuario
+  
+  poblar la base de datos con los datos de servicios climáticos y login de usuario
+  generación de funciones para el procesamiento y análisis de los datos climáticos
+  
 
 <Informe 08>:
-  - Generación de gráficas
-  - Generación de tablas
+  - Generación de gráficas y tablas a partir de los datos de  servicio climático para la presentación de resultados
+  
 
 <!--Procesamiento de datos-->
 <Informe 09>: 
-  - BORRADOR entrega final
+  - BORRADOR entrega final y ajustes de acuerdo a instrucciones del profesor
  
 <Informe 10>:
-  - Despliegue en Heroku
+  - Despliegue de la aplicación en servidores gratuitos de Heroku
   - Entrega final
