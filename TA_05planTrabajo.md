@@ -4,12 +4,15 @@ Estos tasks consisten en la realización de Layouts en HTML/CSS de las imagenes 
 Como versión preliminar se usarán imágenes en vez de gráficos.
 
   - LAYOUT Multianual  
+  
 ![Multianual](https://user-images.githubusercontent.com/80772803/114123280-9ae3f580-98b7-11eb-9f18-e79eec997410.png)
 
   - LAYOUT Página de pronósticos
+  
 ![Prono](https://user-images.githubusercontent.com/80772803/114124547-5a39ab80-98ba-11eb-9577-9bfe68fcd043.png)
 
   - LAYOUT Página Estaciones
+  
   ![images](https://user-images.githubusercontent.com/80772803/114126017-34fa6c80-98bd-11eb-9ffd-c5305066e011.png)
   
 <Informe 04>:
