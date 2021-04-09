@@ -6,6 +6,10 @@
   - 
 <Informe 04>:
   - LAYOUT de página de registro y login de usuario
+  Este task consiste en la realización del Layout en HTML / CSS de la imagen adjunta.
+  Como versión preliminar usar imágenes en vez de gráficos.
+  ![image](https://user-images.githubusercontent.com/80727758/114126188-9589a980-98bd-11eb-9a4b-6a7073a86771.png)
+
 <!--Integración frontend backend y base de datos-->
 <Informe 05>: 
   - Conexión del backend a la base de datos
