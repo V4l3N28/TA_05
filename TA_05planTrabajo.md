@@ -11,7 +11,10 @@
 Como versión preliminar usar imágenes en vez de gráficos.
 
 ![Prono](https://user-images.githubusercontent.com/80772803/114124547-5a39ab80-98ba-11eb-9577-9bfe68fcd043.png)
+
   - LAYOUT Página Estaciones
+  
+  
   
 <Informe 04>:
   - LAYOUT de página de registro y login de usuario
@@ -25,17 +28,19 @@ Como versión preliminar usar imágenes en vez de gráficos.
 <!--Diseño backend-->
 <Informe 06>:
 - Construcción del backend (Python-Flask)
-- Login de usuario
 
 <Informe 07>:
-  -Servicio de datos climaticos 
+  -Servicio de datos climaticos
+  - Login de usuario
 
 <Informe 08>:
   - Generación de gráficas
+  - Generación de tablas
 
 <!--Procesamiento de datos-->
 <Informe 09>: 
-  - Generación de tablas
+  - BORRADOR entrega final
  
 <Informe 10>:
   - Despliegue en Heroku
+  - Entrega final
