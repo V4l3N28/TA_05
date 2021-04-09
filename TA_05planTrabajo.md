@@ -7,6 +7,10 @@
 ![Multianual](https://user-images.githubusercontent.com/80772803/114123280-9ae3f580-98b7-11eb-9f18-e79eec997410.png)
 
   - LAYOUT Página de pronósticos
+  -Este task consiste en la realización del Layout en HTML / CSS de la imagen adjunta.
+Como versión preliminar usar imágenes en vez de gráficos.
+
+![Prono](https://user-images.githubusercontent.com/80772803/114124547-5a39ab80-98ba-11eb-9577-9bfe68fcd043.png)
   - LAYOUT Página Estaciones
   - 
 <Informe 04>:
