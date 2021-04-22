@@ -20,3 +20,6 @@ def based():
     ")")
   #GUARDAR CAMBIOS
     conexion.commit()
+#INSERTAR DATOS
+    #cursor.execute("INSERT INTO datos_estacion_02 VALUES (null, '06/04/2021', 4, 5, 9)")
+    conexion.commit()
