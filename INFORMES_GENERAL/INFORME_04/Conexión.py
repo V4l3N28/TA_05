@@ -23,3 +23,7 @@ def based():
 #INSERTAR DATOS
     #cursor.execute("INSERT INTO datos_estacion_02 VALUES (null, '06/04/2021', 4, 5, 9)")
     conexion.commit()
+#LISTAR DATOS
+    cursor.execute("SELECT temperatura_max FROM datos_estacion_02;")
+    temperaturas_max = cursor.fetchall()
+    var1= [f[0] for f in temperaturas_max]
