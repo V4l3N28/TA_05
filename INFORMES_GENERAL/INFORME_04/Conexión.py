@@ -39,3 +39,5 @@ def based():
 	"ciudad	TEXT NOT NULL,"+
 	"vereda	TEXT NOT NULL,"+
 	")")
+
+    conexion.commit() 
