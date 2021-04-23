@@ -1,10 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 from conexion import based
 
 app= Flask(__name__)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='127.0.0.1',port=5000, debug=True)
 
 #este .py tiene la finalidad de mapear cada uno de los links con su respectiva funcion
 #Conexion a \templates\HOME la cual seria establecida como la pagina principal
