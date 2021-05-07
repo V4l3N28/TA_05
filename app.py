@@ -1,4 +1,5 @@
-from from flask import Flask, request, render_template, url_for, redirect
+from flask import Flask, render_template, flash, request, redirect, url_for, jsonify, session, send_file, current_app, g
+from db import get_db, close_db
 from datetime import datetime
 from flask_mysqldb import MySQLdb
 
@@ -27,18 +28,23 @@ def HOME():
 
 @app.route('/IniciarSesion/', methods=['GET', 'POST'])
 def ventanaInicioSESION():
-    if request.method == 'GET':
+    if g.user:
+        return redirect( url_for('vistaCrud' ))
+    if request.method == 'POST':
+      usuario = request.form['usuario']
+      contrasena = request.form['contrasena']
+      error = None
+      db = get_db() #funcion que se conecta a la BD
+      usuario = db.execute('SELECT * FROM usuarios WHERE usuario = ?', (usuario,) ).fetchone()
+    if user is None:
+      return 'Usuario o contraseña Incorrectos'
+    else:
+      if check_password_hash( usuario[5], contrasena):
+        session.clear()
+        session['user_id'] = user[0]
+    return render_template("vistacrud.html")
 
-        contrasena = request.form['contrasena']
-        ususario = request.form['usuario']
-
-        cursor = mysql.connection.cursor()
-        cursor.execute("INSERT INTO usuario VALUES(NULL, %s, %s"), (contrasena, ususario)
-        cursor.conection.commit()
-
-        return redirect(url_for('HOME'))
-
-  return render_template("ventanaInicioSESION.html")
+    return render_template("ventanaInicioSESION.html")
 
 ##Conexion a \templates\entanvaRegistroUSUARIO
 @app.route('/Registrarse/', methods=['GET', 'POST'])
@@ -54,7 +60,7 @@ def ventanaRegistroUSUARIO():
         ususario = request.form['usuario']
 
         cursor=mysql.connection.cursor()
-        cursor.execute("INSERT INTO usuario VALUES(NULL, %s, %s, %s, %s, %s, %s, %s"), (nombre, apellido, email, email2, contrasena, contrasena2, ususario)
+        cursor.execute("INSERT INTO usuarios VALUES(NULL, %s, %s, %s, %s, %s, %s, %s"), (nombre, apellido, email, contrasena, ususario)
         cursor.conection.commit()
 
         return redirect(url_for('HOME'))
