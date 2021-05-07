@@ -1,6 +1,16 @@
 {%extends 'LAYOUT.html'%}
 {% block title %}Login{% endblock %}
 {% block content %}
+<!--La etiqueta es la clave aquí. Le dice al motor de plantillas que esta plantilla "extiende" otra plantilla. Cuando el sistema de plantillas evalúa esta plantilla, primero localiza al padre. La etiqueta de extensión debe ser la primera etiqueta de la plantilla. Para representar el contenido de un bloque definido en la plantilla principal, use .{% extends %}{{ super() }}-->
+
+<!--form representa un formulario. En este formulario se agregan los diferentes campos de entrada de datos o de confirmación, así como los botones, que como mínimo ha de haber uno, el de envío.-->
+
+<!-- label es un componente, que se utilizan para mostrar texto como el contenido de variables, campos o mensajes en pantalla, este control posee propiedades para cambiar la apariencia del texto en la tabla encontraras las propiedades que usa el control label o etiqueta. Permite cambiar el color de fondo de la etiqueta.-->
+<!-- for se usa cuando queremos repetir un conjunto de instrucciones un número finito de veces.-->
+
+<!--input se usa para crear controles interactivos para formularios basados en la web con el fin de recibir datos del usuario. Hay disponible una amplia variedad de tipos de datos de entrada y widgets de control, que dependen del dispositivo y el agente de usuario -->
+<!--type es una duncion que  permite averiguar el tipo de dato que estamos tratando. y se  utiliza cuando tengamos que hacer depuración y revisar por qué en nuestro código hay cosas que no funcionan si estamos tratando con tipos de datos.-->-->
+
 <div class="flex flex-wrap flex-col justify-center items-center border-content md:p-8 md:mx-64 md:mt-32 bg-gray-200">
   <form action="" method="POST" class="flex flex-col">
   <label for="usuario"> Usuario</label>
