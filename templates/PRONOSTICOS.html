@@ -1,200 +1,90 @@
-<!--Todos los documentos HTML deben comenzar con una declaración <! DOCTYPE>.-->
-<!--La declaración no es una etiqueta HTML. Es una "información" para el navegador sobre qué tipo de documento esperar.-->
-<!DOCTYPE html>
-<!--El documento HTML en sí mismo comienza con <html> y termina con </html>.-->
-<!--El comando lang se usa para establecer el idioma del documento o un rango de texto-->
-<html lang="en">
-<!-- El espacio que se abre entre provee <head> </head> se usa para configurar la información general del encabezado, incluyendo su título y enlaces a scripts y hojas de estilos.-->
-<head>
-    <!--Indica el título del documento.-->
-    <!--Este elemento es obligarorio y debe estar ubicado dentro del elemento head.-->
-    <title>Plantilla</title>
-    <!--El atributo charset especifica la codificación de caracteres para el documento HTML-->
-    <!--le está diciendo a su navegador que use la codificación de caracteres UTF-8, que es un método para convertir los caracteres escritos en código legible por máquina.-->
-    <meta charset="utf-8">
-    <!--Esto significa que el navegador renderizará el ancho de la página al ancho de su propia pantalla.-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--Estos siguientes tres renglones se usan para configurar que se esta trabajando con un framework especifico, en este caso Bootstrap 3-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <!--El atributo de style se usa para agregar estilos a un elemento, como color, fuente, tamaño y otras configuraciones-->
-    <!--Con este atributo se cambia la propiedad a una propiedad CSS. El valor a un valor CSS.-->
-    <!--Uno de sus cambios es por ejemplo que la manera de comentar en el espacio de <style></style> cambia de HTML a CSS-->
-    <style>
-        /* da un valor especifico a los bordes predeterminados de la navbar. */ 
-        .navbar {
-        margin-bottom: 0;
-        border-radius: 0;
-        }
-        
-        /* Ajusta altura de la navbar. en pixeles*/
-        .row.content {height: 450px}
-        
-        /* se usa para establecer un menu que configura el .sidenav */
-        /* el menu incluye las configuraciones de: "height:, width:, position:, z-index:, top:, left:, background-color:, overflow-x:, padding-top:, transition:".*/
-        /* Cada una de estas configuraciones tienen sus propios comandos de ajuste*/
-        .sidenav {
-        padding-top: 20px; /* Colocar contenido a cierto numero de px de la parte superior */
-        background-color: #f1f1f1; /* Determina el color del fondo*/
-        height: 100%; /*Determina el largo de la pagina que va a abarcar segun el porcentaje*/
-        }
-        
-        /* se usa para establrecer un menu que configura el .footer*/
-        footer {
-        background-color: #555;
-        color: white;
-        padding: 15px;
-        }
-        
-        /* en pantallas pequeñas, determina la altura en 'auto' para sidenav y el grid  */
-        @media screen and (max-width: 767px) {
-        .sidenav {
-            height: auto;
-            padding: 15px;
-        }
-        .row.content {height:auto;} 
-        }
-  </style>
-</head>
-<!--La parte visible del documento HTML se encuentra entre <body> y </body>.-->
-<body>
-    <!--Define un conjunto de enlaces de navegación.-->
-    <!--'Class=' asigna nombres de clases al elemento. Por defecto, clases CSS.-->
-    <!--Con Bootstrap, una barra de navegación puede extenderse o contraerse, según el tamaño de la pantalla.-->
-    <!--En bootstrap, la barra de navegacion basica se crea con <nav class = "navbar navbar-default">-->
-    <!--Bootstrap tambien provee una opcion alterna que es la que se esta usando y se implement cambiando la clase .navbar-default a .navbar-inverse-->
-    <nav class="navbar navbar-inverse">
-        <!--El espacio entre <div> y </div> sirve para crear secciones o agrupar contenidos.-->
-        <!--Bootstrap tiene ciertas reglas en cuanto a la organizacion de su rejilla-->
-        <!--Las filas deben colocarse dentro de un .container (ancho fijo) o .container-fluid (ancho completo) para una alineación y relleno adecuados-->
-        <div class="container-fluid">
-            <!--este <div> es tiene la finalidad de colocar un boton en <nav> el cual tendira la funcionalidad de redirigir a otra pagina-->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <!--La etiqueta <span> es un contenedor en línea que se utiliza para marcar una parte de un texto o una parte de un documento.-->
-                    <!--La etiqueta <span> se puede diseñar fácilmente con CSS o se manipula con JavaScript utilizando el atributo class o id.-->
-                    <!--La etiqueta <span> es muy parecida al elemento <div>, pero <div> es un elemento a nivel de bloque y <span> es un elemento en línea.-->
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>                        
-                </button>
-                <a class="navbar-brand" href="#">Proyecto FP</a>
-            </div>
+{%extends 'LAYOUT.html'%}
+{% block title %}Pronosticos{% endblock %}
+{% block content %}
+<div class="flex items-stretch justify-center">
+    <!--BOTONES LATERALES-->
+    <div class="bg-gray-300">
+        <button type="button" class="p-4"><span class="glyphicon glyphicon-info-sign"></span>Info</button><br>
+        <button type="button" class="p-4"><span class="glyphicon glyphicon-picture"></span>download</button><br>
+        <button type="button" class="p-4"><span class="glyphicon glyphicon-print"></span>Print</button>
+    </div>
+    <!--FIN BOTONES LATERALES-->
+    <div class="flex flex-col p-4"> 
+        <!--INICIO PARRAFO ANALISIS-->
+        <h1 class="text-5xl">Analisis</h1><br>
+        <p>Los pronósticos se hacen colectando tantos datos como sea posible acerca del estado de la atmósfera<br>
+        (particularmente temperatura, presión atmosférica, vientos, humedad y precipitaciones) y usando <br>
+        conocidos procesos atmosféricos (a través de la meteorología) para determinar los patrones futuros<br>
+        atmosféricos.
+        </p>
+        <!--FIN PARRAFO ANALISIS-->
+        <hr>
+        <!--INICIO PARRAFO TEST-->
+        <h3 class="text-3xl">Test</h3><br>
+        <p>se usara bootstrap tres como ejemplo con la posibilidad de cambiarlo en el informe_05 </p>
+        <!--FIN PARRAFO TEST-->
+        <hr>
+        <!--INNICIO PARRAFO TABLA-->
+        <div class="container">  
+            <h2 class="text-4xl">Tabla de datos</h2><br>
+            <p>esta tabla esta diseñada mediante html, donde se le implementaron los datos manualmente, pero en su<br> version final sacara los datos de una base de datos</p>
+        </div><br>
+        <!--FIN PARRAFO TABLA-->
+        <!--INICIO TABLA-->
+        <div class="p-4">
+            <table class="border border-black rounded">
+                    <tr class="border border-black rounded">
+                    <th class="border border-black rounded p-4">MESES</th>
+                    <th class="border border-black rounded p-4">TEMPERATURA MAXIMA</th>
+                    <th class="border border-black rounded p-4" >#DIAS QUE LLOVIO</th>
+                    </tr>
 
-            <!--este <div> es tiene la finalidad de especificar cuales serian las otras paginas a las cuales uno se puede redirigir-->
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li><a href="/">Home</a></li>
-                    <!--El comando .class="active" ayuda a idetifivar en la navbar en cual de las paginas el usuario esta ubicado-->
-                    <li class="active"><a href="/Pronosticos/">Pronostico</a></li>
-                    <li><a href="/Estaciones/">Estaciones</a></li>
-                    <li><a href="/General/">General</a></li>
-                </ul>
+                    <tr class="border border-black rounded">
+                    <td class="border border-black rounded p-4">Julio</td>
+                    <td class="border border-black rounded p-4">27 grados</td>
+                    <td class="border border-black rounded p-4">13 dias</td>
+                    </tr>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <!--Bootstrap proporciona 260 glyphicons del conjunto Glyphicons Halflings.-->
-                    <!--Los Glyphicons se pueden utilizar en texto, botones, barras de herramientas, navegación, formularios,y otros-->
-                    <!--Se inserta un Glyphicon con <span class="glyphicon glyphicon-name"></span>-->
-                    <!--La parte del nombre en la sintaxis anterior debe reemplazarse con el nombre propio del glifo.-->
-                    <li><a href="/InicioSesion/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    <li><a href="/Registrarse/"><>Sing in</a></li>
-                </ul>
-            </div>
+                    <tr class="border border-black rounded">
+                    <td class="border border-black rounded p-4">Agosto</td>
+                    <td class="border border-black rounded p-4">26 grados</td>
+                    <td class="border border-black rounded p-4">23 dias</td>
+                    </tr>
+
+                    <tr class="border border-black rounded">
+                    <td class="border border-black rounded p-4">Septiembre</td>
+                    <td class="border border-black rounded p-4">24 grados</td>
+                    <td class="border border-black rounded p-4">16 dias</td>
+                    </tr>
+            </table>   
         </div>
-    </nav>
-    <!-- .text-center simplemente se encarga de centrar todosegun el contenedor-->
-    <div class="container-fluid text-center">    
-        <div class="row content">
-            <!--El sistema de cuadrícula de Bootstrap permite hasta 12 columnas en la página.-->
-            <!--Si no desea utilizar las 12 columnas individualmente, puede agrupar las columnas para crear columnas más anchas.-->
-            <!--.col-sm-2 el numero se usa para especificar cuantas de las 12 columnas quiero usar para este contenedor-->
-            <div class="col-sm-2 sidenav">
-                <button type="button" class="btn"><span class="glyphicon glyphicon-info-sign"></span>Info</button><hr>
-                <button type="button" class="btn"><span class="glyphicon glyphicon-picture"></span>download</button><hr>
-                <button type="button" class="btn"><span class="glyphicon glyphicon-print"></span>Print</button>
-            </div>
-
-            <!--.col-sm-7 el numero se usa para especificar cuantas de las 12 columnas quiero usar para este contenedor-->
-            <!--las columnas de la cuadrícula deben sumar hasta doce por fila. Más que eso, las columnas se apilarán sin importar la ventana gráfica.-->
-            <div class="col-sm-7 text-left"> 
-                <!--Los encabezados HTML se definen con las etiquetas <h1> a <h6>.-->
-                <!--<h1> define el encabezado más importante. <h6> define el encabezado menos importante-->
-                <!--los párrafos se definen con la etiqueta <p>-->
-                <!--La etiqueta <br> se usa dentro de los parafos para cambiar de renglon-->
-                <!--La etiqueta <hr> se usa para dar un espacio entre textos en este caso-->
-                <h1>Analisis</h1>
-                    <p>Los pronósticos se hacen colectando tantos datos como sea posible acerca del estado de la atmósfera<br>
-                        (particularmente temperatura, presión atmosférica, vientos, humedad y precipitaciones) y usando <br>
-                        conocidos procesos atmosféricos (a través de la meteorología) para determinar los patrones futuros<br>
-                        atmosféricos.
-                    </p>
-                    <hr>
-                    <h3>Test</h3>
-                    <p>se usara bootstrap tres como ejemplo con la posibilidad de cambiarlo en el informe_05 </p>
-                <hr>
-                <div class="container">
-                    <h2>Tabla de datos</h2>
-                    <p>esta tabla esta diseñada mediante html, donde se le implementaron los datos manualmente, pero en su<br> version final sacara los datos de una base de datos</p>
-                </div>
-
-                <div class="w6-padding w3-white notranslate">
-                    <!--La etiqueta <table> define una tabla HTML.-->
-                    <!--Cada fila de la tabla se define con una etiqueta <tr>. Cada encabezado de tabla se define con una etiqueta <th>. Cada celda / datos de la tabla se define con una etiqueta <td>.-->
-                    <table class="table table-bordered table-condenced">
-                        <thead>
-                            <tr>
-                                <th>MESES</th>
-                                <th>TEMPERATURA MAXIMA</th>
-                                <th>#DIAS QUE LLOVIO</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>Julio</td>
-                                <td>27 grados</td>
-                                <td>13 dias</td>
-                            </tr>
-
-                            <tr>
-                                <td>Agosto</td>
-                                <td>26 grados</td>
-                                <td>23 dias</td>
-                            </tr>
-                            
-                            <tr>
-                                <td>Septiembre</td>
-                                <td>24 grados</td>
-                                <td>16 dias</td>
-                            </tr>
-                        </tbody>
-                    </table>   
-                </div>
-            </div>
-            <!--.col-sm-3 el numero se usa para especificar cuantas de las 12 columnas quiero usar para este contenedor-->
-            <div class="col-sm-3 sidenav">
-                <div class="well">
-                    <p>tabla probabilidad</p>
-                    <!--La etiqueta HTML <img> se utiliza para incrustar una imagen en una página web.-->
-                    <!--La etiqueta <img> tiene dos atributos obligatorios:
-                        src: especifica la ruta a la imagen
-                        alt: especifica un texto alternativo para la imagen
-                    -->
-                    <!--este seria el ejemplo basico donde habria que reemplazar por los nombres <img src="url" alt="alternatetext">-->
-                    <img src="torta70.png" alt="grafico_probabilidad.png" width="300" height="300">
-                </div>
-
-                <div class="well">
-                    <p>Informacion Basica</p>
-                </div>
-            </div>
+        <!--FIN TABLA-->
+    </div>
+    <div class="bg-gray-300">
+        <!--IMAGEN-->
+        <div class="border border-black rounded">
+            <p class="p-4">tabla probabilidad</p>
+            <img src="torta70.png" alt="grafico_probabilidad.png" width="300" height="300">
+        </div>
+        <!--BOTON INFORMACION BASICA-->
+        <div class="border border-black rounded">
+            <p class="p-4">Informacion Basica</p>
+        </div>
+        <!--FIN BOTON-->
+    </div>
+</div><br>
+<!--DEFINIR FOOTER-->
+<!-- Se crea el footer de la página, agregandole la clase footer para darle , colores (border blue) y algunos elementos de diseño: (padding top, border y relative) -->
+<footer class="flex justify-end items-end footer bg-gray-200 relative pt-1 border-b-2 border-blue-700">
+    <!-- se crea un contenedor con margen y padding a los lados (mx px) -->
+    <div class="container mx-auto px-6">
+        <!-- se brindan atributos de flexbox para darle alineación vertical a los elementos (flex col) -->
+        <div class="flex flex-col">
+            <!-- Se añaden propiedades al texto como uppercase, que pone el texto en mayusculas y font-bold (negrilla), propiedades de color (text gray), adicionalmente un margen (abajo)  -->
+            <span class="font-bold text-gray-700 uppercase mb-2">Pie de página</span>
+            <!-- En este elemento, al ser un link, se agrega la propiedad de hover para darle un efecto de cambio (de color) para cuando el apuntador pase por encima -->
+            <span class="my-2"><a href="#" class="text-blue-700  text-md hover:text-blue-500">link 1</a></span>
         </div>
     </div>
-
-    <footer class="container-fluid text-center">
-        <p>Pie de pagina</p>
-    </footer>
-
-</body>
-</html>
+</footer>
+{% endblock %}
