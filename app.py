@@ -1,7 +1,16 @@
-from flask import Flask, render_template, url_for
-from conexion import based
+from from flask import Flask, request, render_template, url_for, redirect
+from datetime import datetime
+from flask_mysqldb import MySQLdb
 
 app= Flask(__name__)
+
+#conexion a la base de datos
+app.config['MYSQL_HOST']= 'localhost'
+app.config['MYSQL_USER']= 'root'
+app.config['MYSQL_PASSWORD']= ''
+app.config['MYSQL_DB']= 'bases'
+
+mysql= MySQL(app)
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1',port=5000, debug=True)
@@ -14,14 +23,43 @@ def HOME():
   return render_template("HOME.html")
 
 ##Conexion a \templates\ventanaInicioSESION
-@app.route('/IniciarSesion/')
+
+
+@app.route('/IniciarSesion/', methods=['GET', 'POST'])
 def ventanaInicioSESION():
+    if request.method == 'GET':
+
+        contrasena = request.form['contrasena']
+        ususario = request.form['usuario']
+
+        cursor = mysql.connection.cursor()
+        cursor.execute("INSERT INTO usuario VALUES(NULL, %s, %s"), (contrasena, ususario)
+        cursor.conection.commit()
+
+        return redirect(url_for('HOME'))
+
   return render_template("ventanaInicioSESION.html")
 
 ##Conexion a \templates\entanvaRegistroUSUARIO
-@app.route('/Registrarse/')
+@app.route('/Registrarse/', methods=['GET', 'POST'])
 def ventanaRegistroUSUARIO():
-  return render_template("ventanaRegistroUSUARIO.html")
+    if request.method == 'POST':
+        
+        nombre = request.form['nombre']
+        apellido = request.form['apellido']
+        email = request.form['email']
+        email2 = request.form['email']
+        contrasena = request.form['contrasena']
+        contrasena2 = request.form['contrasena']
+        ususario = request.form['usuario']
+
+        cursor=mysql.connection.cursor()
+        cursor.execute("INSERT INTO usuario VALUES(NULL, %s, %s, %s, %s, %s, %s, %s"), (nombre, apellido, email, email2, contrasena, contrasena2, ususario)
+        cursor.conection.commit()
+
+        return redirect(url_for('HOME'))
+  
+    return render_template("ventanaRegistroUSUARIO.html")
 
 ##Conexion a \templates\CambiarCLAVE
 @app.route('/ChangePassword/')
