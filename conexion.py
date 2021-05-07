@@ -5,7 +5,7 @@ app = Flask(__name__)
 def based():
     #estamos conectando una base de datos SQLite3 a python mediante el comando sqlite3.connect('')
     #Conexión a base de datos
-    conexion= sqlite3.connect('bases.db')
+    conexion= sqlite3.connect('bases_0704.db')
     #Crear cursor
     cursor = conexion.cursor()
     """Para crear una tabla de nombre "name" se usa el comando  .execute("CREATE TABLE name
@@ -49,47 +49,16 @@ def based():
 	"temperaturaMinima REAL, "+
 	"PRIMARY KEY('id' AUTOINCREMENT)" ")")
 
-
+    #TABLA USUARIO
+    cursor.execute("CREATE TABLE IF NOT EXISTS usuarios ("+
+	"id INTEGER, "+
+	"nombre TEXT NOT NULL, "+
+	"apellido TEXT NOT NULL, "+
+    "usuario TEXT NOT NULL, "+
+	"email TEXT NOT NULL, "+
+    "contrasena TEXT NOT NULL, "+
+	"PRIMARY KEY('id' AUTOINCREMENT) " ")")
     #Se utiliza un comando .commit para realizar cambios
     conexion.commit() 
-    #Para insertar datos en una tabla de nombre "nametable" se usa el comando  .execute("INSERT INTO nametable VALUES() donde INSERT INTO nametable indica la el nombre de la tabla en donde se van a insertar los datos dentro de VALUES()
-  
-    #insertar datos en la tabla fincas
-    cursor.execute("INSERT INTO fincas VALUES (null, 4, 9)")
-  
-    #insertar datos en la tabla observadores   
-    cursor.execute("INSERT INTO  observadores VALUES (null, 'luca', 'leon', 'monsalve', 3113128486, 345701, 345701)")
- 
-    #insertar datos en la tabla registros
-    cursor.execute("INSERT INTO registros VALUES (null, 3,'06/04/2021', 8, 33, 13)")
-  
-    #insertar datos en la tabla veredas
-    cursor.execute("INSERT INTO veredas VALUES (null, 'CAUCA', 'POPAYAN','SANTA ROSA')")
-  
-  
-    '''Para pedir datos de una tabla de nombre "nametable" se usa el comando .execute("SELECT name FROM nametable;") donde SELECT name se utiliza para selecciónar UNA columna específica de la tabla nametable
-    Se crea una variable en donde se va a usar el comando .fetchall() para seleccionar todos los datos de la columna anteriormente seleccionada
-    cursor.execute("SELECT name  FROM nametable;")
-    variable = cursor.fetchall() 
-     pedir datos de la columna finca de la tabla fincas'''
-    
-    cursor.execute("SELECT finca FROM fincas;")
-    fincas= cursor.fetchall()
-
-    #pedir datos de la columna apellidos de la tabla observadores
-    cursor.execute("SELECT apellidos  FROM observadores;")
-    apellidos= cursor.fetchall()
-
-    cursor.execute("SELECT fecha  FROM registros;")
-    fechas= cursor.fetchall()
-    #Para pedir todos los datos de una tabla nametable, se usa el comando .execute("SELECT * FROM nametable;") donde el símbolo * significa TODOS los datos
-    cursor.execute("SELECT  * FROM veredas;")
-    localizacion= cursor.fetchall()
-
-    #Se utiliza un comando .commit para realizar cambios
-    conexion.commit() 
-    
-    return (fincas,apellidos,fechas,localizacion)
-    
-Variable = based()
-print(Variable)
+    return conexion
+based()

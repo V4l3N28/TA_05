@@ -1,21 +1,12 @@
-from flask import Flask, render_template, flash, request, redirect, url_for, jsonify, session, send_file, current_app, g
-from db import get_db, close_db
-from datetime import datetime
-from flask_mysqldb import MySQLdb
+from flask import Flask, render_template, url_for, current_app, g, request, redirect, session
+from conexion import based
+from defi import get_db, close_db, login_required
 
 app= Flask(__name__)
 
-#conexion a la base de datos
-app.config['MYSQL_HOST']= 'localhost'
-app.config['MYSQL_USER']= 'root'
-app.config['MYSQL_PASSWORD']= ''
-app.config['MYSQL_DB']= 'bases'
-
-mysql= MySQL(app)
-
 if __name__ == "__main__":
-    app.run(host='127.0.0.1',port=5000, debug=True)
-
+  app.run(host='127.0.0.1',port=5000, debug=True)
+  based()
 #este .py tiene la finalidad de mapear cada uno de los links con su respectiva funcion
 #Conexion a \templates\HOME la cual seria establecida como la pagina principal
 # este @app.route('/') siempre tiene que estar definido con un solo "/"
@@ -24,49 +15,37 @@ def HOME():
   return render_template("HOME.html")
 
 ##Conexion a \templates\ventanaInicioSESION
-
-
-@app.route('/IniciarSesion/', methods=['GET', 'POST'])
-def ventanaInicioSESION():
-    if g.user:
-        return redirect( url_for('vistaCrud' ))
-    if request.method == 'POST':
-      usuario = request.form['usuario']
-      contrasena = request.form['contrasena']
-      error = None
-      db = get_db() #funcion que se conecta a la BD
-      usuario = db.execute('SELECT * FROM usuarios WHERE usuario = ?', (usuario,)).fetchone()
-      contrasena = db.execute('SELECT * FROM usuarios WHERE contrasena = ?', (contrasena,)).fetchone()
-    if user is None:
-      return 'Usuario o contraseña Incorrectos'
-    else:
-      if check_password_hash( usuario[5], contrasena):
-        session.clear()
-        session['user_id'] = user[0]
-    return render_template("vistacrud.html")
-
-    return render_template("ventanaInicioSESION.html")
+@app.route('/IniciarSesion/', methods=('GET','POST'))
+def iniciosesion():
+  return render_template("ventanaInicioSESION.html")
 
 ##Conexion a \templates\entanvaRegistroUSUARIO
-@app.route('/Registrarse/', methods=['GET', 'POST'])
+@app.route('/Registrarse/', methods=('GET','POST'))
+#Se define una función ventanaRegistroUSUARIO(), la cual verifica si el usuario ya está registrado y lo envía al home
+#Se abre un bloque try except en donde se toman los datos del formulario (request.form), se verifica que el correo y las contraseñas sean iguales
+# Y se insertan esos valores en la base de datos, si los correos y contraseñas no son iguales se redirige a la ventana de registro de usuario
 def ventanaRegistroUSUARIO():
+  if g.user:
+    return redirect( url_for( '/' ) )
+  try:
     if request.method == 'POST':
-        
-        nombre = request.form['nombre']
-        apellido = request.form['apellido']
-        email = request.form['email']
-        email2 = request.form['email']
-        contrasena = request.form['contrasena']
-        contrasena2 = request.form['contrasena']
-        ususario = request.form['usuario']
-
-        cursor=mysql.connection.cursor()
-        cursor.execute("INSERT INTO usuarios VALUES(NULL, %s, %s, %s, %s, %s, %s, %s"), (nombre, apellido, email, contrasena, ususario)
-        cursor.conection.commit()
-
-        return redirect(url_for('HOME'))
-  
+      nombre = request.form['nombre']
+      apellido = request.form['apellido']
+      usuario = request.form['usuario']
+      correo = request.form['email']
+      correo2 = request.form['email2']
+      contrasena = request.form['contrasena']
+      contrasena2 = request.form['contrasena2']
+      if correo == correo2 and contrasena == contrasena2:
+        db = get_db()
+        db.execute("INSERT INTO usuarios(nombre, apellido, usuario, email, contrasena) VALUES ('%s','%s','%s','%s','%s')" % (nombre, apellido, usuario, correo, contrasena))
+        db.commit()
+        return render_template('ventanaInicioSESION.html')
+      else:
+        return render_template("ventanaRegistroUSUARIO.html", nombre = nombre, Apellido = apellido, Usuario=usuario)
     return render_template("ventanaRegistroUSUARIO.html")
+  except:
+    return "Este correo o usuario ya está registrado."
 
 ##Conexion a \templates\CambiarCLAVE
 @app.route('/ChangePassword/')
@@ -92,3 +71,17 @@ def GENERAL():
 @app.route('/Estaciones/')
 def ESTACIONES():
   return render_template("ESTACIONES.html")
+
+#Se define una funcion load_logged_in_user() en la cual se obtiene un user_id de la sesion y se guarda en una variable para trabajarlo más comodamente
+#Si el usuario de la sesion (user_id) está vacío, se le asigna a None a la variable global de user
+#En el caso contrario, si el usuario de la sesión no está vacío, se obtiene ese dato de la base de datos y se le asigna la variable global
+@app.before_request
+def load_logged_in_user():
+    user_id = session.get( 'user_id' )
+
+    if user_id is None:
+        g.user = None
+    else:
+        g.user = get_db().execute(
+            'SELECT * FROM usuarios WHERE id = ?', (user_id,)
+        ).fetchone()
